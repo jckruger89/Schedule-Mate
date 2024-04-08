@@ -77,7 +77,7 @@ namespace Software2
             {
                 string query = "SELECT customerName, type, COUNT(*) AS typeCount FROM appointment " +
                     "JOIN customer ON appointment.customerId = customer.customerId " +
-                    "WHERE start >= @startDate AND end <= @endDate GROUP BY customerName";
+                    "WHERE start >= @startDate AND end <= @endDate GROUP BY customerName, type";
                 MySqlCommand cmd = new MySqlCommand(query, DBConnection.Conn);
                 cmd.Parameters.AddWithValue("@startDate", startDate.ToUniversalTime());
                 cmd.Parameters.AddWithValue("@endDate", endDate.ToUniversalTime());
